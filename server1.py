@@ -44,28 +44,29 @@ entries3 = [(k[2],k[3],k[1]) for k in entries3]
 
 
 
-# Fetching common features between these two database
+# Fetching common features between all three database
 #a[0]is mail, a[1] is color, a[2] is name,  b[0] is a mail,b[1]is date, c[0] is location, c[1] is color, c[2] is image link
 
 
 maaail = 1
 for b in entries2:
     for a in entries1:
-        if b[0] == a[0]:
+        if b[0] == a[0]: # matching mail
             matchess = []
             linkk = [] 
             for c in entries3:
-                if c[1].casefold() == a[1].casefold():
-                    #storing location 
+                if c[1].casefold() == a[1].casefold(): #matching color
+                    #storing location in list 
                     data_matched = [c[0]]
                     matchess.append(data_matched)
-                    #storing image link
+                    #storing image links in list
                     link_matched = [c[2]]
                     linkk.append(link_matched)
                     continue
-                
-
+            
             #print("Mail:", b[0], "Location:", matchess)
+
+            #Making a mail template
             f = open("textformat.txt", "w")
             sent = "Hello " +str(a[2]) + "!" + " \n \n \n \t \tWe have collected certain  images based on your features and thier locations are: \n \n "
             for ii in range(0, len(matchess)):
@@ -79,6 +80,7 @@ for b in entries2:
             final = fii.read()
             
             
+            # Sending Mail
             msg = EmailMessage()
             msg['Subject'] = "Vehicle Matching"
             msg['From'] = "Vehicle Detector Application"
@@ -88,7 +90,7 @@ for b in entries2:
             msg.set_content(final)
 
             server = smtplib.SMTP_SSL('smtp.gmail.com',465)
-            server.login("vehicledetectorproject@gmail.com","kumarannaveenpradeish14")
+            server.login("vehicledetectorproject@gmail.com","<Our Password>")
             server.send_message(msg)
             server.quit()
             print("Mail"+ str(maaail)+" Sent!")
@@ -97,11 +99,3 @@ for b in entries2:
             f.close()
 
 print("All emails sent!!!")
-
-
-
-
-
-
-                    
-                    
