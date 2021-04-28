@@ -67,7 +67,7 @@ for b in entries2:
             msg.set_content(location)
 
             server = smtplib.SMTP_SSL('smtp.gmail.com',465)
-            server.login("vehicledetectorproject@gmail.com","kumarannaveenpradeish14")
+            server.login("vehicledetectorproject@gmail.com","<Our Password>")
             server.send_message(msg)
             server.quit()
             print("Mail"+ str(maaail)+" Sent!")
