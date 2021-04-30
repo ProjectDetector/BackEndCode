@@ -90,7 +90,7 @@ for b in entries2:
             msg.set_content(final)
 
             server = smtplib.SMTP_SSL('smtp.gmail.com',465)
-            server.login("vehicledetectorproject@gmail.com","<Our Password>")
+            server.login("vehicledetectorproject@gmail.com","[Password]")
             server.send_message(msg)
             server.quit()
             print("Mail"+ str(maaail)+" Sent!")
@@ -99,3 +99,4 @@ for b in entries2:
             f.close()
 
 print("All emails sent!!!")
+                
